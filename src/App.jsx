@@ -12,6 +12,7 @@ import {
 import SignUpPage from "./pages/SignUpPage.jsx";
 import Cart from "./features/cart/Cart.jsx";
 import CartPage from "./pages/CartPage.jsx";
+import CheckOut from "./pages/CheckOut.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
@@ -19,13 +20,14 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="/checkout" element={<CheckOut />} />
       {/* ... etc. */}
     </Route>
   )
 );
 const App = () => {
   return (
-    <div>
+    <div className="">
    <RouterProvider router={router}/>
       {/* <ProductList/> */}
     </div>

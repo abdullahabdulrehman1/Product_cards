@@ -35,9 +35,9 @@ const Cart = () => {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="mx-auto max-w-7xl py-0 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl sm:px-6 lg:px-14 bg-white rounded-2xl lg:py-6 my-20 shadow-2xl ">
     
-      <div className="mx-auto my-10 max-w-7xl py-0 sm:px-10 lg:px-8">
+      <div className="mx-auto   max-w-7xl  sm:px-10 lg:px-8">
       <h1 className="font-bold  text-4xl text-gray-600 font-serif my-10">Cart</h1>
         <div className="flow-root">
           <ul role="list" className="-my-6 divide-y divide-gray-200">
@@ -95,14 +95,16 @@ const Cart = () => {
         <p className="mt-0.5 text-sm text-gray-500">
           Shipping and taxes calculated at checkout.
         </p>
+        <Link to={"/checkout"}>
         <div className="mt-6">
           <a
-            href="#"
+          
             className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
           >
             Checkout
           </a>
         </div>
+        </Link>
             
         <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
           <p>

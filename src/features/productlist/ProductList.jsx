@@ -132,7 +132,7 @@ function classNames(...classes) {
 export default function ProductList() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   return (
-    <div className="bg-white">
+    <div className="bg-white mt-5 rounded-2xl border border-black">
       <div>
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
@@ -352,7 +352,7 @@ export default function ProductList() {
                   <Disclosure
                     as="div"
                     key={section.id}
-                    className="border-b border-gray-200 py-10"
+                    className="border-b border-gray-200 py-0"
                   >
                     {({ open }) => (
                       <>
