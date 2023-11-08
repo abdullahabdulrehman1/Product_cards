@@ -12,7 +12,9 @@
   }
   ```
 */
-import { Fragment, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCountAsync, selectAllProduct } from "./ProductSlice";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
@@ -100,37 +102,20 @@ const filters = [
     ],
   },
 ];
-const products = [
-  {
-    id: 1,
-    name: "Earthen Bottle",
-    href: "#",
-    price: "$48",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-    imageAlt:
-      "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
-  },
-
-  {
-    id: 4,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
-    imageAlt:
-      "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  // More products...
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ProductList() {
+  const disptach = useDispatch();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const products = useSelector(selectAllProduct);
+// console.log(products)
+
+  useEffect(() => {
+    disptach(fetchCountAsync())
+  },[disptach])
   return (
     <div className="bg-white mt-5 rounded-2xl border border-black">
       <div>
@@ -415,24 +400,24 @@ export default function ProductList() {
                     <h2 className="sr-only">Products</h2>
 
                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                      {products.map((product) => (
+                      {products.map((products) => (
                         <a
-                          key={product.id}
-                          href={product.href}
+                          key={products.id}
+                          href={products.href}
                           className="group"
                         >
                           <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                             <img
-                              src={product.imageSrc}
-                              alt={product.imageAlt}
+                              src={products.imageSrc}
+                              alt={products.imageAlt}
                               className="h-full w-full object-cover object-center group-hover:opacity-75"
                             />
                           </div>
                           <h3 className="mt-4 text-sm text-gray-700">
-                            {product.name}
+                            {products.name}
                           </h3>
                           <p className="mt-1 text-lg font-medium text-gray-900">
-                            {product.price}
+                            {products.price}
                           </p>
                         </a>
                       ))}

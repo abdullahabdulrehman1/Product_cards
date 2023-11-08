@@ -1,11 +1,13 @@
-const fetchCount= ()=>{
-    return new Promise(async (resolve,reject)=>{
-        setTimeout(async ()=>{
-            const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-            const data = await response.json()
-            resolve({data})
-
-        },500)
-    })
-}
+const fetchCount = () => {
+  return new Promise(async (resolve) => {
+    setTimeout(async () => {
+      const response = await fetch("http://localhost:3000/products");
+        const data = await response.json();
+        resolve({data});
+    console.log("response succeeded")
+    }, 500);
+  }
+  
+  );
+};
 export default fetchCount;
