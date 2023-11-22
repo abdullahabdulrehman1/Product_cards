@@ -11,8 +11,8 @@ export const fetchCountAsync = createAsyncThunk(
     const response = await fetchCount();
     // const data = await response.json;
     return response.data;
-}
-// console.log("response succeeded here")
+  }
+  // console.log("response succeeded here")
 );
 const productSlice = createSlice({
   name: "product",
@@ -28,7 +28,7 @@ const productSlice = createSlice({
       .addCase(fetchCountAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchCountAsync.fulfilled, (state,action) => {
+      .addCase(fetchCountAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.products = state.products.concat(action.payload);
         // state.products += action.payload;
@@ -38,7 +38,6 @@ const productSlice = createSlice({
       });
   },
 });
-
 
 export const { increment } = productSlice.actions;
 export const selectAllProduct = (state) => state.product.products;
